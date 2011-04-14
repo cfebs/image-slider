@@ -17,3 +17,19 @@
 .rotate_list {
 	margin: 0px auto;
 }
+.rotate_list_item {
+	height: 10px;
+	width: 10px;
+	display: inline-block;
+	background-color: #ddd;
+	margin: 0 5px;
+	border: 1px solid #999;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;	
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.rotate_list_item.active {
+	background-color: #bbb;
+}
