@@ -30,6 +30,6 @@
 	border-radius: 10px;
 }
 
-.rotate_list_item.active {
+.active_rotate_list_item {
 	background-color: #bbb;
 }

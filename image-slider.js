@@ -36,8 +36,8 @@ $(document).ready( function () {
 	});
 	
 	function setActive(i) {
-		$('.rotate_list span').removeClass('active');
-		$('.rotate_list span:eq('+i+')').addClass('active');
+		$('.rotate_list span').removeClass('active_rotate_list_item');
+		$('.rotate_list span:eq('+i+')').addClass('active_rotate_list_item');
 	}
 	
 	function slideTo(i) {
