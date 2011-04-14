@@ -1,0 +1,19 @@
+.images, .images li , .rotate_list, .rotate_list li { 
+	list-style-type: none;
+	margin: 0; padding: 0;
+	float: left; 
+	}
+.images li { float: left; }
+
+.images { width: 400%; position: absolute; left:0px; top: 0px; }
+
+.slider {
+	position: relative;
+	width: 800px;
+	height: 280px;
+	overflow: hidden;
+}
+
+.rotate_list {
+	margin: 0px auto;
+}
