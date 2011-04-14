@@ -10,6 +10,7 @@ $(document).ready( function () {
 	var height = 280;
 	var images = this.find('li img');
 	var current = 0;
+	var ready = true;
 	$obj = this;
 	$obj.wrap('<div class="slider" />');
 	$('.slider').after('<ul class="rotate_list" />');
@@ -41,12 +42,16 @@ $(document).ready( function () {
 	}
 	
 	function slideTo(i) {
-		setActive(i);
-		$obj.animate( {
-			left: i*width*-1
-		}, 1000, function () {
-			current = i
-		});
+		if(ready) {
+			ready = false;
+			setActive(i);
+			$obj.animate( {
+				left: i*width*-1
+			}, 1000, function () {
+				current = i;
+				ready = true;
+			});
+		}
 	}
 	
 	function rotate() {
