@@ -6,13 +6,27 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 	<script type="text/javascript" src="image-slider.js"></script>
 	<link rel="stylesheet" href="image-slider.css" />
+  <script type="text/javascript">
+    $(document).ready( function() {
+      $('.images').slider({height: 280, width: 800});
+    });
+  </script>
 </head>
-<body>
+<body style="font-family: sans-serif; padding-left: 20px">
+  <h1>Demo</h1>
+  <p>Basic usage of the slider</p>
 	<ul class="images">
 		<li><img src="1.png" alt="" /></li>
 		<li><img src="2.png" alt="" /></li>
 		<li><img src="1.png" alt="" /></li>
 		<li><img src="2.png" alt="" /></li>
 	</ul>
+  <br>
+  <h2>Code</h2>
+  <pre>
+    $(document).ready( function() {
+      $('.images').slider({height: 280, width: 800});
+    });
+  </pre>
 </body>
 </html>

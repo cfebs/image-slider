@@ -1,41 +1,101 @@
-$(document).ready( function () {
-	$('.images').slider();
-});
-
+/* A simple animated image slider by collin
+ * 
+ * Usage:
+ *
+ * $(document).ready( function() {
+ *      $('.images').slider({
+ *        width : 950,
+ *        height: 400
+ *      });
+ * }); 
+ *
+ *  Where .images is structred like this:
+ *
+ * <ul class="images">
+ *  <li>
+ *   <img src="1.jpg" alt="" />
+ *  </li>
+ *  <li>
+ *   <img src="2.jpg" alt="" />
+ *  </li>
+ * </ul>    
+ *
+ * The resulting html structure will look like:
+ *
+ *  <div class="slider">
+ *   <ul>
+ *     <!-- same structre as above -->
+ *   </ul>
+ *  </div>
+ *  <ul class="rotate_list">
+ *    <span class="rotate_list_item [active_rotate_list_item]"></span>
+ *  </ul>
+ *
+ */
 (function( $ ){
 
-  $.fn.slider = function() {
+  $.fn.slider = function(params) {
+
+  params = $.extend( {width:800, height: 280, current_index: 0, pause_time: 7000}, params);
+
 	var ready = true;
-	var width = 800;
-	var height = 280;
+	var width = params.width;
+	var height = params.height;
 	var images = this.find('li img');
-	var current = 0;
+	var current = params.current_index;
 	var ready = true;
+  var pause_time = params.pause_time;
 	$obj = this;
+
+  // wrap in a div
 	$obj.wrap('<div class="slider" />');
+  // create the rotate list
 	$('.slider').after('<ul class="rotate_list" />');
-	$.each( images, function(i) {
+
+  // for each image set the height
+	images.each(function(i) {
+    $(this).css({'width': width, 'height': height});
+    // append a span object
 		$('.rotate_list').append('<span></span>');
 	});
-	
-	$('.rotate_list').css('width', width);
+
+  // make the ul really big
+  $obj.css({'width' : images.length*100+'%',
+    'position':'absolute',  
+    'left':0,  
+    'top':0,  
+  });
+
+  // setup the slider 'window'
+	$('.slider').css({'height': height,
+    'position':'relative', 
+    'height':height, 
+    'overflow':'hidden', 
+  });
+
+  // css stuff
+	$('.rotate_list, .slider').css('width', width);
 	$('.rotate_list').css('text-align', 'center');
 	$('.rotate_list span').addClass('rotate_list_item');
 	
+  // Set the active classes to the rotate list
 	setActive(current);
-	
+
+  // Slide stuff around
 	$('.rotate_list span').click( function () {
 		slideTo($(this).index());
 		clearInterval(interval);
 		interval = setInterval(rotate, 7000);
 	});
 	
+  // hover steez
 	$('.rotate_list span').hover( function () {
 		$(this).css('cursor', 'pointer');
 	} , function () {
 		
 	});
 	
+  // Helper functions
 	function setActive(i) {
 		$('.rotate_list span').removeClass('active_rotate_list_item');
 		$('.rotate_list span:eq('+i+')').addClass('active_rotate_list_item');
@@ -59,7 +119,8 @@ $(document).ready( function () {
 		slideTo(n);
 	}	
 		
-	var interval = setInterval(rotate, 7000);
-	
+	var interval = setInterval(rotate, pause_time);
+
+  return this;
   };
 })( jQuery );
