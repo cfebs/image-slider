@@ -9,7 +9,7 @@
          });
     });
 
-## Where .images is structred like this:
+Where .images is structred like this:
 
     <ul class="images">
      <li>
@@ -20,7 +20,7 @@
      </li>
     </ul>
 
-## The resulting html structure will look like:
+The resulting html structure will look like:
 
     <div class="slider">
     <ul>
