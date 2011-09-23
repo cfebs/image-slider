@@ -4,8 +4,11 @@
  *
  * $(document).ready( function() {
  *      $('.images').slider({
+ *        // height and width required
  *        width : 950,
- *        height: 400
+ *        height: 400,
+ *        current_index: 0,
+ *        pause_time: 7000
  *      });
  * }); 
  *
@@ -36,12 +39,12 @@
 
   $.fn.slider = function(params) {
 
-  params = $.extend( {width:800, height: 280, current_index: 0, pause_time: 7000}, params);
+  params = $.extend( {current_index: 0, pause_time: 7000}, params);
 
-	var ready = true;
-	var width = params.width;
-	var height = params.height;
+	var ready = false;
 	var images = this.find('li img');
+  var width = params.width;
+  var height = params.height;
 	var current = params.current_index;
 	var ready = true;
   var pause_time = params.pause_time;
@@ -85,7 +88,7 @@
 	$('.rotate_list span').click( function () {
 		slideTo($(this).index());
 		clearInterval(interval);
-		interval = setInterval(rotate, 7000);
+		interval = setInterval(rotate, pause_time);
 	});
 	
   // hover steez
