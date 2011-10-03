@@ -66,14 +66,14 @@
   $obj.css({'width' : images.length*100+'%',
     'position':'absolute',  
     'left':0,  
-    'top':0,  
+    'top':0
   });
 
   // setup the slider 'window'
 	$('.slider').css({'height': height,
     'position':'relative', 
     'height':height, 
-    'overflow':'hidden', 
+    'overflow':'hidden'
   });
 
   // css stuff
